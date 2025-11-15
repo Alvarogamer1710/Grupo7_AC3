@@ -3,8 +3,6 @@
 //
 
 #include <iostream>
-#include <stdexcept>
-#include <cstddef>
 
 template <typename T>
 class biblioteca_musica {
@@ -31,7 +29,8 @@ public:
 
     void push_back(const T& valor) {
         ampliacionSiNecesario();
-        data_[size_++] = valor;
+        data_[size_] = valor;
+        ++size_;
     }
     bool quitarPrimero(const T& valor) {
         for (size_t i = 0; i < size_; ++i) {
