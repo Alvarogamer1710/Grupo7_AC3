@@ -1,6 +1,6 @@
 # 🎬 Proyecto AC3 – Sistema de Gestión de Streaming y Música
 **Universidad Europea**  
-**Asignatura:** Programación / Ingeniería del Software  
+**Asignatura:** Programación con Estructuras Lineales  
 **Entrega:** Actividad Colaborativa 3
 
 ---
