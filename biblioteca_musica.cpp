@@ -3,6 +3,8 @@
 //
 
 #include <iostream>
+#include <stdexcept>
+#include <cstddef>
 
 template <typename T>
 class biblioteca_musica {
