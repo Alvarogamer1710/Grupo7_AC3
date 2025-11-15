@@ -9,7 +9,6 @@ private:
     std::string genero;
 
 public:
-    // Constructor vacío
     Cancion() {}
 
     // Constructor
@@ -34,9 +33,3 @@ public:
     }
 };
 
-//main de prueba
-int main() {
-    Cancion c("Numb", "Meteora", "Linkin Park", "Rock");
-    c.mostrar();
-    return 0;
-}
