@@ -28,6 +28,8 @@ public:
     string getGenero() { return genero; }
     string getCalidad() { return calidad; }
     bool getDisponible() { return disponible; }
+    bool getEstandar() { return estandar; }
+    float getPrecio() { return precio; }
     void setDisponible(bool d) { disponible = d; }
 
     void mostrar() {
@@ -109,7 +111,43 @@ public:
         if (!found) cout << "nada" << endl;
     }
 
-    // ivan aca meté buscarCalidad y alquilar, tmb metelo en el menu
+    // buscar por calidad
+    void buscarCalidad(string c) {
+        bool found = false;
+        for ( int i = 0; i < catalogo.size(); i++) {
+            if (catalogo.get(i)->getCalidad() == c) {
+                catalogo.get(i)->mostrar();
+                found = true;
+            }
+        }
+        if (!found) cout << "nada" << endl;
+    }
+
+    // alquilar contenido
+    void alquilarContenido(string a) {
+        bool found = false;
+        for (int i = 0; i < catalogo.size(); i++)
+        {
+            if (catalogo.get(i)->getTitulo() == a)
+            {
+                found = true;
+                if (catalogo.get(i)->getDisponible())
+                {
+                    if (!catalogo.get(i)->getEstandar())
+                    {
+                        cout << "El precio es: " << catalogo.get(i)->getPrecio() << " euros" << endl;
+                    }
+                    catalogo.get(i)->setDisponible(false);
+                    cout << "Alquilado con exito" << endl;
+                } else
+                {
+                    cout << "Ya alquilado" << endl;
+                }
+                break;
+            }
+        }
+        if (!found) cout << "nada" << endl;
+    }
 
     void verTodo() {
         for (int i = 0; i < catalogo.size(); i++) {
@@ -135,7 +173,7 @@ int main() {
 
     do {
         cout << "\n--- STREAMING ---\n";
-        cout << "1. Buscar titulo\n2. Buscar genero\n3. Ver todo\n0. Salir\n";
+        cout << "1. Buscar titulo\n2. Buscar genero\n3. Buscar calidad\n4. Alquilar contenido\n5. Ver todo\n0. Salir\n";
         cin >> op;
         cin.ignore();
 
@@ -147,7 +185,18 @@ int main() {
             cout << "Genero: ";
             getline(cin, busq);
             sistema.buscarGenero(busq);
-        } else if (op == 3) {
+        }else if (op == 3)
+        {
+            cout << "Calidad: ";
+            getline(cin, busq);
+            sistema.buscarCalidad(busq);
+        }else if (op == 4)
+        {
+            cout << "Titulo del contenido por alquilar: ";
+            getline(cin, busq);
+            sistema.alquilarContenido(busq);
+        }else if (op == 5)
+        {
             sistema.verTodo();
         }
     } while (op != 0);
